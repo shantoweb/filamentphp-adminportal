@@ -11,7 +11,8 @@ use function Livewire\Volt\state;
 
 state([
     'name' => fn () => auth()->user()->name,
-    'email' => fn () => auth()->user()->email
+    'email' => fn () => auth()->user()->email,
+    'adminCount' => fn () => User::role('super_admin')->count()
 ]);
 
 $updateProfileInformation = function () {
@@ -51,11 +52,12 @@ $sendVerification = function () {
 
 <section>
     <header>
-        <div x-data="{ adminCount: 0 }" x-init="
+        <div x-data="{ adminCount: @entangle('adminCount') }"
+        x-init="
         window.Echo.channel('userUpdate')
             .listen('UserUpdated', (e) => {
                 console.log('Admin count:', e.adminCount);
-                adminCount = e.adminCount; // Update adminCount with the event data
+                adminCount = e.adminCount;
                 });
         ">
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
