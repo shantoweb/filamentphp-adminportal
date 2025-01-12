@@ -55,13 +55,13 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(isIndividual: true),
                 Tables\Columns\TextColumn::make('email')->searchable(isIndividual: true)->sortable(),
-                Tables\Columns\TextColumn::make('roles')->sortable()
+                Tables\Columns\TextColumn::make('roles')
                     ->badge()
                     ->formatStateUsing(function ($record) {
                         return $record->roles->pluck('name')->join(', ');
                     }),
-                Tables\Columns\TextColumn::make('created_at')->dateTime()->toggleable(),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime()->toggleable(),
+                Tables\Columns\TextColumn::make('created_at')->sortable()->dateTime()->toggleable(),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->dateTime()->toggleable(),
             ])
             ->filters([
                 Filter::make('created_at')
