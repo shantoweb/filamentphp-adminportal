@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Partner;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Support\Enums\IconPosition;
@@ -18,6 +19,10 @@ class UserCountWidget extends BaseWidget
         
             Stat::make('Total Admins', User::role('super_admin')->count())
             ->description('Number of registered admins')
+            ->descriptionIcon('heroicon-o-users', IconPosition::Before),
+        
+            Stat::make('Total Partners', Partner::count())
+            ->description('Number of registered Partners')
             ->descriptionIcon('heroicon-o-users', IconPosition::Before),
         
         ];
