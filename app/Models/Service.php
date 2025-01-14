@@ -12,13 +12,17 @@ class Service extends Model
     protected $fillable = [
         'service_categories_id',
         'name',
-        'service_code',
         'description',
         'price',
     ];
 
     public function category(){
         return $this->belongsTo(ServiceCategory::class, 'service_categories_id');
+    }
+
+    public function partners()
+    {
+        return $this->belongsToMany(Partner::class);
     }
 
 }

@@ -23,8 +23,8 @@ class EditUser extends EditRecord
     protected function afterSave(): void
     {
         $adminCount = Role::findByName('super_admin')->users->count();
-        Redis::set('admin_count', $adminCount);
-        broadcast(new UserUpdated(Redis::get('admin_count')))->toOthers();
+        // Redis::set('admin_count', $adminCount);
+        // broadcast(new UserUpdated(Redis::get('admin_count')))->toOthers();
         // dd(Redis::get('admin_count'));
     }
 } 

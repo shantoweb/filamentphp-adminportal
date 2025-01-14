@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_categories_id')->nullable()->constrained()->onDelete('set null')->onUpdate('cascade');
             $table->string('name')->unique();
-            $table->string('service_code')->unique();
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->timestamps();

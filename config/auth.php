@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api-partners' => [
+            'driver' => 'sanctum',
+            'provider' => 'partners',
+        ],
+        'api-resellers' => [
+            'driver' => 'sanctum',
+            'provider' => 'resellers',
+        ],
     ],
 
     /*
@@ -65,10 +73,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'partners' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Partner::class,
+        ],
+        
+        'resellers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Reseller::class, // Adjust this to your actual Reseller model
+        ],
     ],
 
     /*
